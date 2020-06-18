@@ -1,0 +1,56 @@
+---
+title: "README"
+author: "Haarkin898"
+date: "6/18/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Getting and Cleaning Data: Course Assignment
+
+## Introduction
+------------
+This repository contains the documents required for the accomplishment of the final task for the  "Getting and Cleaning Data" course on Coursera, which is part of the JHU Data Science specialization.
+
+
+## About the raw data
+------------------
+There are 2 sets of data i.e. the “test” data set and the “train” data set (see readme.txt from original data).  In each data set are 3 files relevant to the purpose of this assignment containing data about the “subjects”, “labels” and the measurements e.g.  
+The features (561 of them) are unlabeled and can be found in the x_test.txt. 
+The activity labels are in the y_test.txt file.
+The test subjects are in the subject_test.txt file.
+The same applies to the training set.
+
+## About the script and the tidy dataset
+-------------------------------------
+A script called run_analysis.R was created to merge the test and training sets together.
+After merging, labels are added and only columns that have to do with mean and standard deviation are kept.
+
+Prerequisites for this script:
+1. The UCI HAR Dataset must be extracted and,
+2. The UCI HAR Dataset must be saved in a directory called "UCI HAR Dataset"
+
+The above mentioned 3 files from each dataset were read into R. Compatible files e.g. “x_test.txt” and “x_train.txt” are merged using the rbind command in R generating 3 sets of records.
+The second task in the assignment involves the extraction of variables associated with “mean” or “std” hence the grep command was used to extract such variables, generating an 86 column data frame (see “leanDatafeatures.txt” for list of variables).
+
+The activity data and subject data were converted to factors and added to the extracted data frame from the prior step using the cbind command hence generating an 88 column data frame.
+
+The generated data frame was cleaned using the gsub command to change the name into descriptive ones and remove redundancies. Using the “reshape2” library in R, the data frame was melted and summarized by determining the mean based on “subject” and “activity” generating a tidy data with dimension 180 observations and 88 variables.
+The generated data frame was then used to generate both a .csv and .txt files (tidyDataLean.txt) which are included in this submission.
+
+## About the Code Book
+-------------------
+The CodeBook.md file explains the transformations performed and the resulting data and variables. This repository also contains the R script "analysis_run.R" used in cleaning the original dataset, the clean data set "idyDatalean.txt", "leanDatafeatures.txt" that lists the variables used in the analysis, and the previously mentioned "CodeBook.Rmd".
+
+```
+```
+
+
+```
+
+```
+
+
